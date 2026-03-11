@@ -1,6 +1,6 @@
-# 🌿 ShelfLife AI
+# ShelfLife AI
 
-**A smart virtual refrigerator powered by AI — built for Technovation Girls 2026**
+**A smart virtual refrigerator powered by AI.**
 
 > Team Suerte · Aktobe, Kazakhstan  
 > SDG 12: Responsible Consumption and Production
@@ -15,7 +15,7 @@ ShelfLife AI is a web application that acts as a virtual guardian for your refri
 
 ## Quick Start
 
-1. Open `index.html` in any modern browser — no server required.
+1. Open `index.html` in any modern browser - no server required.
 2. The dashboard pre-loads with demo data so you can explore immediately.
 3. Navigate using the top navigation bar.
 
