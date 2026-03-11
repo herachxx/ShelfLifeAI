@@ -3,551 +3,694 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>ShelfLife AI — Your Smart Fridge Guardian</title>
-  <meta name="description" content="ShelfLife AI helps you track food freshness, reduce waste, and never get food poisoning again. SDG 12: Responsible Consumption." />
-  <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>🌿</text></svg>" />
-  <link rel="stylesheet" href="css/style.css" />
+  <title>ShelfLife AI — Smart Fridge Guardian</title>
+  <meta name="description" content="AI-powered fridge management. Track expiry dates, scan receipts, analyze ingredients. SDG 12: Responsible Consumption." />
+  <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>🌿</text></svg>"/>
+  <link rel="stylesheet" href="css/design.css" />
+  <link rel="stylesheet" href="css/components.css" />
 </head>
 <body>
 
-<!-- =================== NAV =================== -->
-<nav>
-  <a class="nav-logo" href="#" onclick="navigate('home')">🌿 Shelf<span>Life</span> AI</a>
-  <ul class="nav-links" id="navLinks">
-    <li><a data-page="home" href="#">Home</a></li>
-    <li><a data-page="about" href="#">About</a></li>
-    <li><a data-page="dashboard" href="#">Dashboard</a></li>
-    <li><a data-page="scan" href="#">Scan</a></li>
-    <li><a data-page="chat" href="#">AI Chat</a></li>
-    <li><a data-page="shopping" href="#">Shopping</a></li>
-    <li><a data-page="family" href="#">Family</a></li>
-    <li><a data-page="dashboard" href="#" class="nav-cta">Open Fridge 🧊</a></li>
-  </ul>
-  <div class="nav-hamburger" id="hamburger">
-    <span></span><span></span><span></span>
+<!-- ================================================
+  NAVIGATION
+================================================ -->
+<nav class="nav">
+  <div class="nav-inner">
+    <a class="nav-brand" href="#" onclick="navigate('home')">
+      <div class="nav-brand-dot">🌿</div>
+      ShelfLife AI
+    </a>
+    <ul class="nav-links" id="navLinks">
+      <li><a data-page="home"      href="#">Home</a></li>
+      <li><a data-page="about"     href="#">About</a></li>
+      <li><a data-page="dashboard" href="#">Dashboard</a></li>
+      <li><a data-page="scan"      href="#">Scan</a></li>
+      <li><a data-page="chat"      href="#">AI Chat</a></li>
+      <li><a data-page="shopping"  href="#">Shopping</a></li>
+      <li><a data-page="family"    href="#">Family</a></li>
+      <li><a data-page="dashboard" href="#" class="nav-cta">Open Fridge 🧊</a></li>
+    </ul>
+    <button class="nav-burger" id="navBurger" aria-label="Menu">
+      <span></span><span></span><span></span>
+    </button>
   </div>
 </nav>
 
-<!-- =================== HOME PAGE =================== -->
+<!-- ================================================
+  PAGE: HOME
+================================================ -->
 <div class="page active" id="page-home">
 
-  <!-- HERO -->
+  <!-- Hero -->
   <section class="hero">
-    <div class="hero-content">
-      <div class="hero-badge">🌍 SDG 12 · Responsible Consumption</div>
-      <h1 class="hero-title">Your fridge's<br><em>guardian angel</em></h1>
-      <p class="hero-sub">ShelfLife AI tracks every item in your fridge — from purchase to expiry — so you never waste food, never get poisoned, and always know what's inside.</p>
-      <div class="hero-actions">
-        <button class="btn btn-primary" onclick="navigate('dashboard')">🧊 Open My Fridge</button>
-        <button class="btn btn-outline" onclick="navigate('scan')">📷 Scan a Receipt</button>
-      </div>
-    </div>
-    <div class="hero-visual">
-      <div class="fridge-mockup">
-        <div class="fridge-header">
-          <h3>🧊 My Fridge</h3>
-          <span class="fridge-temp">+4°C · 8 items</span>
+    <div class="hero-bg"></div>
+    <div class="container">
+      <div class="hero-grid">
+        <div>
+          <div class="hero-label">🌍 SDG 12 · Responsible Consumption</div>
+          <h1 class="hero-title">Your smart<br><strong>fridge guardian</strong></h1>
+          <p class="hero-desc">
+            ShelfLife AI tracks every item in your refrigerator — from purchase to expiry — so you never waste food, never get poisoned, and always know what's inside.
+          </p>
+          <div class="hero-btns">
+            <button class="btn btn-primary" onclick="navigate('dashboard')" style="font-size:0.95rem;padding:10px 22px">
+              🧊 Open My Fridge
+            </button>
+            <button class="btn btn-ghost" onclick="navigate('scan')" style="font-size:0.95rem;padding:10px 22px">
+              📷 Scan Receipt
+            </button>
+          </div>
+          <div class="hero-stats">
+            <div>
+              <div class="hero-stat-val">1.3B+</div>
+              <div class="hero-stat-label">Tonnes food wasted / yr</div>
+            </div>
+            <div>
+              <div class="hero-stat-val">600M</div>
+              <div class="hero-stat-label">Food poisoning cases / yr</div>
+            </div>
+            <div>
+              <div class="hero-stat-val">30%</div>
+              <div class="hero-stat-label">Of all food produced</div>
+            </div>
+          </div>
         </div>
-        <div class="fridge-items">
-          <div class="fridge-item">
-            <span>🥚 Eggs</span>
-            <span class="item-meta">14 days</span>
-            <div class="status-dot fresh"></div>
-          </div>
-          <div class="fridge-item">
-            <span>🥛 Milk</span>
-            <span class="item-meta">4 days</span>
-            <div class="status-dot fresh"></div>
-          </div>
-          <div class="fridge-item">
-            <span>🍗 Chicken</span>
-            <span class="item-meta">1 day left!</span>
-            <div class="status-dot soon"></div>
-          </div>
-          <div class="fridge-item">
-            <span>🧀 Cheese</span>
-            <span class="item-meta">Expired!</span>
-            <div class="status-dot expired"></div>
+
+        <div class="hero-visual" style="position:relative">
+          <div class="fridge-widget" style="position:relative">
+            <div class="notif-badge">Milk expires in 2 days</div>
+            <div class="widget-bar">
+              <div class="widget-bar-title">My Fridge</div>
+              <div class="widget-bar-meta">+4°C · 9 items</div>
+            </div>
+            <div class="widget-tabs">
+              <button class="widget-tab active">All</button>
+              <button class="widget-tab">🟡 Expiring</button>
+              <button class="widget-tab">🔴 Expired</button>
+            </div>
+            <div class="widget-body">
+              <div class="widget-item">
+                <div class="status-dot fresh"></div>
+                <span class="widget-item-name">🥚 Eggs</span>
+                <span class="widget-item-exp">14d left</span>
+              </div>
+              <div class="widget-item">
+                <span class="widget-item-name">🥛 Whole Milk</span>
+                <span style="width:8px;height:8px;border-radius:50%;background:var(--amber-500);flex-shrink:0"></span>
+                <span class="widget-item-exp" style="color:var(--amber-600)">4d left</span>
+              </div>
+              <div class="widget-item">
+                <span class="widget-item-name">🍗 Chicken Breast</span>
+                <span style="width:8px;height:8px;border-radius:50%;background:var(--amber-500);flex-shrink:0"></span>
+                <span class="widget-item-exp" style="color:var(--amber-600)">1d left!</span>
+              </div>
+              <div class="widget-item">
+                <span class="widget-item-name">🧀 Cheddar Cheese</span>
+                <span style="width:8px;height:8px;border-radius:50%;background:var(--red-500);flex-shrink:0"></span>
+                <span class="widget-item-exp" style="color:var(--red-600)">Expired</span>
+              </div>
+            </div>
           </div>
         </div>
       </div>
     </div>
   </section>
 
-  <!-- STATS BAR -->
-  <div class="stats-bar">
-    <div>
-      <div class="stat-num" data-count="1300" data-suffix="M+">0</div>
-      <div class="stat-label">Tonnes of food wasted per year</div>
-    </div>
-    <div>
-      <div class="stat-num" data-count="600" data-suffix="M">0</div>
-      <div class="stat-label">People get food poisoning annually</div>
-    </div>
-    <div>
-      <div class="stat-num" data-count="30" data-suffix="%">0</div>
-      <div class="stat-label">Of all food produced is wasted</div>
-    </div>
-    <div>
-      <div class="stat-num" data-count="420" data-suffix="B$">0</div>
-      <div class="stat-label">Annual cost of food waste globally</div>
+  <!-- Stats -->
+  <div class="stats-row">
+    <div class="stats-inner container" style="max-width:100%;padding:0">
+      <div class="stat-cell container">
+        <div class="stat-big">1.3B+</div>
+        <div class="stat-desc">Tonnes of food wasted globally every year</div>
+      </div>
+      <div class="stat-cell">
+        <div class="stat-big">600M</div>
+        <div class="stat-desc">People get food poisoning annually</div>
+      </div>
+      <div class="stat-cell">
+        <div class="stat-big">30%</div>
+        <div class="stat-desc">Of all food produced is never eaten</div>
+      </div>
+      <div class="stat-cell">
+        <div class="stat-big">$420B</div>
+        <div class="stat-desc">Annual economic cost of food waste</div>
+      </div>
     </div>
   </div>
 
-  <!-- FEATURES -->
+  <!-- Features -->
   <section class="features-section">
-    <div class="section-label">What We Do</div>
-    <h2 class="section-title">Everything your fridge<br>needs to stay smart</h2>
-    <p class="section-sub">ShelfLife AI combines cutting-edge AI with a beautiful interface to make food management effortless for everyone.</p>
+    <div class="container">
+      <div class="section-label">What We Offer</div>
+      <h2 class="section-title">Everything your fridge<br>needs to stay smart</h2>
+      <p class="section-sub">ShelfLife AI combines AI with a clean interface to make food management effortless for everyone.</p>
 
-    <div class="features-grid">
-      <div class="feature-card">
-        <div class="feature-icon">📷</div>
-        <h3>Receipt & Product Scanning</h3>
-        <p>Take a photo of your grocery receipt or any product. Our AI instantly recognizes items, reads expiry dates, and adds everything to your virtual fridge.</p>
-      </div>
-      <div class="feature-card">
-        <div class="feature-icon">⏱️</div>
-        <h3>Expiry Countdown Timers</h3>
-        <p>Every item gets a live countdown. Color-coded status: 🟢 Fresh, 🟡 Expiring soon, 🔴 Expired. Push notifications 48 hours before anything goes bad.</p>
-      </div>
-      <div class="feature-card">
-        <div class="feature-icon">🤖</div>
-        <h3>Smart AI Chat</h3>
-        <p>Talk to your fridge naturally. Say "-1 egg", "finished the milk", or "what's expiring soon?" — the AI updates your list instantly.</p>
-      </div>
-      <div class="feature-card">
-        <div class="feature-icon">🧬</div>
-        <h3>Ingredient Analyzer</h3>
-        <p>Scan any product label. Our AI highlights dangerous additives like E621, E250, palm oil, and allergens — protecting your family's health.</p>
-      </div>
-      <div class="feature-card">
-        <div class="feature-icon">👨‍👩‍👧</div>
-        <h3>Family Fridge Sharing</h3>
-        <p>Invite family members to share one fridge. Everyone sees live updates. Add notes like "My chocolate — don't touch! 😡" to protect your snacks.</p>
-      </div>
-      <div class="feature-card">
-        <div class="feature-icon">🛒</div>
-        <h3>Smart Shopping List</h3>
-        <p>When items run out or expire, they automatically move to your shopping list. Prioritized by urgency so you never forget what matters most.</p>
+      <div class="features-grid">
+        <div class="feature-card">
+          <div class="feature-icon">📷</div>
+          <h3>Receipt &amp; Product Scanning</h3>
+          <p>Take a photo of your grocery receipt or product. Our AI (powered by Gemini) instantly recognizes items and reads expiry dates — adding everything to your virtual fridge automatically.</p>
+        </div>
+        <div class="feature-card">
+          <div class="feature-icon">⏱️</div>
+          <h3>Expiry Countdown Timers</h3>
+          <p>Every item gets a live countdown with color-coded status: 🟢 Fresh, 🟡 Expiring Soon, 🔴 Expired. Push notifications warn you 48 hours before anything goes bad.</p>
+        </div>
+        <div class="feature-card">
+          <div class="feature-icon">🤖</div>
+          <h3>Smart AI Chat</h3>
+          <p>Talk to your fridge naturally. Say "-1 egg", "finished the milk", or "what's expiring soon?" — the AI parses your message and updates your inventory in real time.</p>
+        </div>
+        <div class="feature-card">
+          <div class="feature-icon">🧬</div>
+          <h3>Ingredient Analyzer</h3>
+          <p>Scan any product label. Our AI highlights dangerous additives like E621, E250, palm oil, and allergens — protecting your family's health with every purchase.</p>
+        </div>
+        <div class="feature-card">
+          <div class="feature-icon">👨‍👩‍👧</div>
+          <h3>Family Fridge Sharing</h3>
+          <p>Invite household members to share one fridge. Everyone sees live updates. Add sticky notes like "My chocolate — don't touch! 😡" to protect your items.</p>
+        </div>
+        <div class="feature-card">
+          <div class="feature-icon">🛒</div>
+          <h3>Smart Shopping List</h3>
+          <p>When items run out or expire, they automatically move to your shopping list. Prioritized by urgency so you always know what to buy first.</p>
+        </div>
       </div>
     </div>
   </section>
 
-  <!-- HOW IT WORKS -->
+  <!-- How it works -->
   <section class="how-section">
-    <div class="section-label">How It Works</div>
-    <h2 class="section-title">From store to smart<br>fridge in 4 steps</h2>
-    <p class="section-sub">ShelfLife AI fits seamlessly into your daily routine — no manual data entry needed.</p>
-    <div class="steps-grid">
-      <div class="step-card">
-        <div class="step-num">01</div>
-        <h3>Shop as usual</h3>
-        <p>Buy groceries like you normally do. Keep your receipt or just have the products ready.</p>
-      </div>
-      <div class="step-card">
-        <div class="step-num">02</div>
-        <h3>Snap a photo</h3>
-        <p>Take one photo of your receipt or scan individual products. AI recognizes everything in seconds.</p>
-      </div>
-      <div class="step-card">
-        <div class="step-num">03</div>
-        <h3>Products appear instantly</h3>
-        <p>Your virtual fridge is populated automatically with countdown timers and status indicators.</p>
-      </div>
-      <div class="step-card">
-        <div class="step-num">04</div>
-        <h3>Stay notified</h3>
-        <p>Get alerts 48 hours before anything expires. Chat with AI to update quantities anytime.</p>
+    <div class="container">
+      <div class="section-label">How It Works</div>
+      <h2 class="section-title" style="color:white">From store to smart<br>fridge in 4 steps</h2>
+      <p class="section-sub">ShelfLife AI fits seamlessly into your daily routine — no manual data entry needed.</p>
+      <div class="steps-grid">
+        <div class="step-card">
+          <div class="step-num">01</div>
+          <h3>Shop as usual</h3>
+          <p>Buy groceries like you normally do. Keep your receipt or have the products ready for a quick scan.</p>
+        </div>
+        <div class="step-card">
+          <div class="step-num">02</div>
+          <h3>Snap a photo</h3>
+          <p>Take one photo of your receipt or scan individual products. AI recognizes everything in seconds.</p>
+        </div>
+        <div class="step-card">
+          <div class="step-num">03</div>
+          <h3>Products appear instantly</h3>
+          <p>Your virtual fridge is populated with live countdown timers and color-coded freshness status.</p>
+        </div>
+        <div class="step-card">
+          <div class="step-num">04</div>
+          <h3>Stay notified</h3>
+          <p>Get alerts 48 hours before anything expires. Chat with AI to update quantities anytime you use something.</p>
+        </div>
       </div>
     </div>
   </section>
 
-  <!-- SDG BANNER -->
-  <div class="sdg-banner">
-    <div class="sdg-badge">
-      <div class="sdg-num">12</div>
-      <div class="sdg-label">SDG</div>
+  <!-- SDG -->
+  <section class="sdg-section">
+    <div class="container">
+      <div class="sdg-inner">
+        <div class="sdg-badge">
+          <div class="sdg-n">12</div>
+          <div class="sdg-l">SDG</div>
+        </div>
+        <div class="sdg-content">
+          <h3>Supporting UN SDG 12: Responsible Consumption &amp; Production</h3>
+          <p>Every year, 1.3 billion tonnes of food is wasted while 828 million people go hungry. ShelfLife AI directly combats this by helping households track, manage, and minimize food waste — making responsible consumption accessible to everyone, starting with their own kitchen.</p>
+        </div>
+      </div>
     </div>
-    <div class="sdg-text">
-      <h3>Supporting UN SDG 12: Responsible Consumption & Production</h3>
-      <p>Every year, 1.3 billion tonnes of food is wasted globally while 828 million people go hungry. ShelfLife AI directly combats this by helping households track, manage, and minimize food waste — making responsible consumption accessible to everyone, starting from their own kitchen.</p>
-    </div>
-  </div>
+  </section>
 
-  <!-- FOOTER -->
+  <!-- Footer -->
   <footer>
-    <div>
-      <div class="footer-brand">🌿 ShelfLife AI</div>
-      <div class="footer-sub">Built by Team Suerte · Aktobe, Kazakhstan · Technovation Girls 2026</div>
-    </div>
-    <div class="footer-links">
-      <a href="#" onclick="navigate('about')">About Team</a>
-      <a href="#" onclick="navigate('dashboard')">Dashboard</a>
-      <a href="#" onclick="navigate('scan')">Scan</a>
+    <div class="container">
+      <div class="footer-inner">
+        <div>
+          <div class="footer-brand-name">🌿 ShelfLife AI</div>
+          <div class="footer-brand-sub">Built by Team Suerte · Aktobe, Kazakhstan · Technovation Girls 2026</div>
+        </div>
+        <div class="footer-links">
+          <a href="#" onclick="navigate('about')">About Team</a>
+          <a href="#" onclick="navigate('dashboard')">Dashboard</a>
+          <a href="#" onclick="navigate('scan')">Scan</a>
+          <a href="#" onclick="navigate('chat')">AI Chat</a>
+        </div>
+      </div>
     </div>
   </footer>
-</div>
+</div><!-- /page-home -->
 
-<!-- =================== ABOUT PAGE =================== -->
+<!-- ================================================
+  PAGE: ABOUT
+================================================ -->
 <div class="page" id="page-about">
-  <div class="about-layout" style="padding-top:5rem">
-    <div class="section-label">Meet the Team</div>
-    <h1 class="section-title">Team Suerte</h1>
-    <p class="section-sub" style="margin-bottom:1.5rem">
-      <em>Suerte</em> — Spanish for "luck" — but our success is built on hard work and passion. We're five 10th-grade students from Aktobe, Kazakhstan, united by a shared mission: using technology to fight food waste and protect health.
-    </p>
+  <div class="page-wrap">
+    <div class="about-layout">
+      <div class="section-label">The Team</div>
+      <h1 class="section-title">Team Suerte</h1>
+      <p class="section-sub"><em>Suerte</em> — Spanish for "luck" — but our success is built on hard work, curiosity, and a shared passion for technology. We're five 10th-grade students from Aktobe, Kazakhstan.</p>
 
-    <div class="team-grid">
-      <div class="team-card">
-        <div class="team-avatar" style="background:#2D9E6B">A</div>
-        <h4>Aruzhan</h4>
-        <p>10th Grade · AIS</p>
+      <div class="team-grid">
+        <div class="team-card">
+          <div class="team-av" style="background:#059669">A</div>
+          <h4>Aruzhan</h4>
+          <p>10th Grade · AIS</p>
+        </div>
+        <div class="team-card">
+          <div class="team-av" style="background:#3b82f6">I</div>
+          <h4>Inabat</h4>
+          <p>10th Grade · NIS</p>
+        </div>
+        <div class="team-card">
+          <div class="team-av" style="background:#8b5cf6">Z</div>
+          <h4>Zere</h4>
+          <p>10th Grade · NIS</p>
+        </div>
+        <div class="team-card">
+          <div class="team-av" style="background:#f59e0b">A</div>
+          <h4>Aigerim</h4>
+          <p>10th Grade · NIS</p>
+        </div>
+        <div class="team-card">
+          <div class="team-av" style="background:#64748b">S</div>
+          <h4>Sapar</h4>
+          <p>Mentor · AIS</p>
+        </div>
       </div>
-      <div class="team-card">
-        <div class="team-avatar" style="background:#4A90D9">I</div>
-        <h4>Inabat</h4>
-        <p>10th Grade · NIS</p>
-      </div>
-      <div class="team-card">
-        <div class="team-avatar" style="background:#9B59B6">Z</div>
-        <h4>Zere</h4>
-        <p>10th Grade · NIS</p>
-      </div>
-      <div class="team-card">
-        <div class="team-avatar" style="background:#E8A838">A</div>
-        <h4>Aigerim</h4>
-        <p>10th Grade · NIS</p>
-      </div>
-      <div class="team-card">
-        <div class="team-avatar" style="background:#D95F5F">S</div>
-        <h4>Sapar</h4>
-        <p>Mentor · AIS</p>
-      </div>
-    </div>
 
-    <div style="margin-top:3rem">
-      <div class="section-label">The Problem We're Solving</div>
-      <h2 class="section-title" style="font-size:1.8rem">Why ShelfLife AI?</h2>
-      <p style="color:var(--ink-mid);line-height:1.8;max-width:700px;margin-bottom:1.5rem">
-        Food poisoning from expired products is a real, everyday problem — especially for busy students, families, and working professionals. Most people don't have a clear picture of what's inside their fridge: what's expired, what's fresh, and what they need to buy. This leads to both food waste and health risks.
+      <hr class="divider" style="margin:40px 0 32px">
+
+      <div class="section-label">The Problem</div>
+      <h2 style="font-family:'Sora',sans-serif;font-size:1.4rem;font-weight:800;margin-bottom:12px">Why ShelfLife AI?</h2>
+      <p style="color:var(--text-3);line-height:1.8;max-width:680px;margin-bottom:12px">
+        Food poisoning from expired products is a real, everyday problem — especially for busy students, families, and professionals. Most people don't have a clear picture of what's inside their fridge: what's expired, what's fresh, and what they need to buy. This leads to both food waste and health risks.
       </p>
-      <p style="color:var(--ink-mid);line-height:1.8;max-width:700px">
-        ShelfLife AI addresses UN SDG 12 (Responsible Consumption and Production) by turning any smartphone into a powerful fridge management tool — complete with AI-powered receipt scanning, expiry tracking, ingredient analysis, and family sharing.
+      <p style="color:var(--text-3);line-height:1.8;max-width:680px">
+        ShelfLife AI addresses <strong>UN SDG 12 (Responsible Consumption and Production)</strong> by turning any smartphone into a powerful fridge management tool — complete with AI-powered scanning, expiry tracking, ingredient analysis, and family sharing.
       </p>
-    </div>
 
-    <div style="margin-top:3rem;padding:2rem;background:var(--bg-card);border:1px solid var(--border);border-radius:var(--radius)">
-      <div class="section-label">Ethics</div>
-      <h3 style="font-family:'Playfair Display',serif;font-size:1.2rem;margin-bottom:0.75rem">Our Ethical Commitments</h3>
-      <ul style="color:var(--ink-mid);font-size:0.9rem;line-height:2;list-style:none;padding:0">
-        <li>🔒 <strong>Privacy First</strong> — No food data or photos are stored on external servers without consent</li>
-        <li>🌍 <strong>Accessibility</strong> — Designed to work for all income levels, not just tech-savvy users</li>
-        <li>🤖 <strong>Transparent AI</strong> — Users always know when AI is making suggestions vs. confirmed data</li>
-        <li>♻️ <strong>Zero Tracking</strong> — We don't sell user consumption data to advertisers or third parties</li>
-        <li>🏥 <strong>Safety Warnings</strong> — Ingredient alerts are sourced from verified health databases</li>
-      </ul>
+      <div class="ethics-card">
+        <div style="display:flex;align-items:center;justify-content:space-between;margin-bottom:16px">
+          <h3 style="font-family:'Sora',sans-serif;font-size:1rem;font-weight:700">Our Ethical Commitments</h3>
+          <span class="badge badge-accent">SDG Aligned</span>
+        </div>
+        <div class="ethics-item">
+          <span class="ethics-icon">🔒</span>
+          <div><strong>Privacy First</strong> — No food data or photos stored on external servers without explicit consent</div>
+        </div>
+        <div class="ethics-item">
+          <span class="ethics-icon">🌍</span>
+          <div><strong>Accessibility</strong> — Designed to work for all income levels, not just tech-savvy users</div>
+        </div>
+        <div class="ethics-item">
+          <span class="ethics-icon">🤖</span>
+          <div><strong>Transparent AI</strong> — Users always see when AI is making a suggestion vs. confirmed data</div>
+        </div>
+        <div class="ethics-item">
+          <span class="ethics-icon">📵</span>
+          <div><strong>No Data Selling</strong> — We never sell user consumption data to advertisers or third parties</div>
+        </div>
+        <div class="ethics-item">
+          <span class="ethics-icon">🏥</span>
+          <div><strong>Health Safety</strong> — Ingredient risk levels sourced from verified food science databases</div>
+        </div>
+      </div>
     </div>
   </div>
-</div>
+</div><!-- /page-about -->
 
-<!-- =================== DASHBOARD PAGE =================== -->
+<!-- ================================================
+  PAGE: DASHBOARD
+================================================ -->
 <div class="page" id="page-dashboard">
-  <div class="dashboard-layout" style="padding-top:5rem">
-    <div class="dashboard-header">
-      <div>
-        <h1>🧊 My Virtual Fridge</h1>
-        <p style="color:var(--ink-light);font-size:0.875rem;margin-top:0.25rem">Your food inventory at a glance</p>
-      </div>
-      <div style="display:flex;gap:0.75rem">
-        <button class="btn btn-outline" onclick="navigate('scan')">📷 Scan</button>
-        <button class="btn btn-primary" onclick="openAddModal()">＋ Add Item</button>
-      </div>
-    </div>
+  <div class="dash-layout">
+    <div class="dash-inner">
 
-    <div class="dashboard-stats">
-      <div class="dash-stat">
-        <div class="dash-stat-icon green">🟢</div>
+      <!-- Header -->
+      <div class="dash-header">
         <div>
-          <div class="dash-stat-val" id="stat-fresh">—</div>
-          <div class="dash-stat-lbl">Fresh items</div>
+          <h1>🧊 My Virtual Fridge</h1>
+          <p>Your food inventory at a glance</p>
+        </div>
+        <div class="dash-header-actions">
+          <button class="btn btn-ghost" onclick="navigate('scan')">📷 Scan Receipt</button>
+          <button class="btn btn-primary" onclick="openModal('modal-add')">＋ Add Item</button>
         </div>
       </div>
-      <div class="dash-stat">
-        <div class="dash-stat-icon yellow">🟡</div>
-        <div>
-          <div class="dash-stat-val" id="stat-soon">—</div>
-          <div class="dash-stat-lbl">Expiring soon</div>
-        </div>
-      </div>
-      <div class="dash-stat">
-        <div class="dash-stat-icon red">🔴</div>
-        <div>
-          <div class="dash-stat-val" id="stat-expired">—</div>
-          <div class="dash-stat-lbl">Expired</div>
-        </div>
-      </div>
-    </div>
 
-    <div class="products-grid" id="products-grid">
-      <!-- Rendered by JS -->
+      <!-- KPIs -->
+      <div class="dash-kpis">
+        <div class="kpi-card">
+          <div class="kpi-icon green">🟢</div>
+          <div>
+            <div class="kpi-val" id="kpi-fresh">—</div>
+            <div class="kpi-label">Fresh items</div>
+          </div>
+        </div>
+        <div class="kpi-card">
+          <div class="kpi-icon amber">🟡</div>
+          <div>
+            <div class="kpi-val" id="kpi-soon">—</div>
+            <div class="kpi-label">Expiring soon</div>
+          </div>
+        </div>
+        <div class="kpi-card">
+          <div class="kpi-icon red">🔴</div>
+          <div>
+            <div class="kpi-val" id="kpi-expired">—</div>
+            <div class="kpi-label">Expired</div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Filters -->
+      <div class="dash-filters">
+        <div class="dash-search-wrap">
+          <span class="dash-search-icon">🔍</span>
+          <input class="input dash-search" id="dash-search" placeholder="Search products…" />
+        </div>
+        <div class="filter-tabs">
+          <button class="filter-tab active" data-filter="all"     onclick="setDashFilter('all')">All <span id="fc-all">0</span></button>
+          <button class="filter-tab"        data-filter="fresh"   onclick="setDashFilter('fresh')">Fresh <span id="fc-fresh">0</span></button>
+          <button class="filter-tab"        data-filter="soon"    onclick="setDashFilter('soon')">⚠ Soon <span id="fc-soon">0</span></button>
+          <button class="filter-tab"        data-filter="expired" onclick="setDashFilter('expired')">🔴 Expired <span id="fc-expired">0</span></button>
+        </div>
+      </div>
+
+      <!-- Products Grid -->
+      <div class="products-grid" id="products-grid"></div>
+
     </div>
   </div>
-</div>
+</div><!-- /page-dashboard -->
 
-<!-- =================== SCAN PAGE =================== -->
+<!-- ================================================
+  PAGE: SCAN
+================================================ -->
 <div class="page" id="page-scan">
-  <div class="scan-layout" style="padding-top:5rem">
-    <div class="dashboard-header">
-      <div>
-        <h1>📷 Scan & Analyze</h1>
-        <p style="color:var(--ink-light);font-size:0.875rem;margin-top:0.25rem">Upload a receipt or product photo for AI analysis</p>
+  <div class="page-wrap">
+    <div class="container scan-layout">
+
+      <div class="dash-header">
+        <div>
+          <h1>📷 Scan &amp; Analyze</h1>
+          <p>Upload a receipt or product photo — AI does the rest</p>
+        </div>
       </div>
-    </div>
 
-    <div class="scan-tabs">
-      <button class="scan-tab active" onclick="setScanTab('receipt')">🧾 Receipt</button>
-      <button class="scan-tab" onclick="setScanTab('product')">📦 Product</button>
-      <button class="scan-tab" onclick="setScanTab('ingredient')">🧬 Ingredients</button>
-    </div>
-
-    <div class="upload-zone" id="upload-zone">
-      <div id="upload-preview-wrap">
-        <img id="upload-preview" class="upload-preview" style="display:none" alt="Preview" />
+      <div class="scan-tabs">
+        <button class="scan-tab active" onclick="setScanMode('receipt',this)">🧾 Receipt</button>
+        <button class="scan-tab"        onclick="setScanMode('product',this)">📦 Product</button>
+        <button class="scan-tab"        onclick="setScanMode('ingredient',this)">🧬 Ingredients</button>
       </div>
-      <div class="upload-icon">📤</div>
-      <div class="upload-title" id="upload-title">Upload Receipt Photo</div>
-      <div class="upload-sub" id="upload-sub">AI will detect all items and expiry dates from your receipt</div>
-      <button class="btn btn-outline" onclick="document.getElementById('file-input').click()">Choose Photo</button>
-      <input type="file" id="file-input" accept="image/*" style="display:none" onchange="handleFileUpload(event)" />
-    </div>
 
-    <div class="ai-result-box" id="ai-result" style="display:none">
-      <h3>🤖 ShelfLife AI Results</h3>
-      <div id="ai-result-content"></div>
-    </div>
+      <!-- Upload section -->
+      <div id="upload-section">
+        <div class="upload-zone" id="upload-zone"
+             ondragover="event.preventDefault();this.classList.add('drag-over')"
+             ondragleave="this.classList.remove('drag-over')"
+             ondrop="handleDrop(event)">
+          <img id="upload-preview" class="upload-preview" style="display:none" alt="Preview" />
+          <div class="upload-icon">📤</div>
+          <div class="upload-title" id="upload-title">Upload Receipt Photo</div>
+          <div class="upload-sub"   id="upload-sub">AI detects all items and expiry dates from your grocery receipt</div>
+          <button class="btn btn-ghost" onclick="event.stopPropagation();document.getElementById('file-input').click()">Choose Photo</button>
+          <input type="file" id="file-input" accept="image/*" style="display:none" onchange="handleFileUpload(event)" />
+        </div>
 
-    <!-- Ingredient Analysis Demo -->
-    <div style="margin-top:2rem;background:var(--bg-card);border:1px solid var(--border);border-radius:var(--radius);padding:1.5rem">
-      <h3 style="font-family:'Playfair Display',serif;margin-bottom:0.5rem">🧬 Quick Ingredient Check</h3>
-      <p style="font-size:0.875rem;color:var(--ink-mid);margin-bottom:1rem">Paste product ingredients to check for harmful additives:</p>
-      <textarea id="ingredient-input" class="form-input" style="border-radius:12px;min-height:80px;resize:vertical" placeholder="e.g. Water, Sugar, E621, E250, Palm Oil, Sodium Benzoate..."></textarea>
-      <button class="btn btn-primary" style="margin-top:0.75rem" onclick="analyzeIngredients()">Analyze Ingredients 🔬</button>
-      <div id="ingredient-result" style="margin-top:1rem"></div>
+        <div class="ai-result-box" id="ai-result-box" style="display:none">
+          <div class="ai-result-header" id="ai-result-header">🤖 ShelfLife AI Results</div>
+          <div class="ai-result-body"  id="ai-result-body"></div>
+        </div>
+      </div>
+
+      <!-- Ingredient text section -->
+      <div id="ingredient-section" style="display:none">
+        <div class="card">
+          <div class="card-header">
+            <div>
+              <h3>🧬 Ingredient Composition Analyzer</h3>
+              <p>Paste ingredient list to check for harmful additives and allergens</p>
+            </div>
+          </div>
+          <div class="card-body">
+            <div class="mb-3">
+              <label class="label">Ingredient List</label>
+              <textarea class="textarea" id="ingredient-input" placeholder="e.g. Water, Sugar, E621, E250, Palm Oil, Sodium Benzoate, Citric Acid…"></textarea>
+            </div>
+            <button class="btn btn-primary" onclick="analyzeIngredients()">Analyze Ingredients 🔬</button>
+            <div id="ingredient-result" class="mt-4"></div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Also available in upload modes -->
+      <div id="inline-ingredient" style="margin-top:28px">
+        <div class="card">
+          <div class="card-header">
+            <div>
+              <h3>🧬 Quick Ingredient Check</h3>
+              <p>Available on any page — analyze any product's ingredients</p>
+            </div>
+          </div>
+          <div class="card-body">
+            <label class="label">Paste Ingredients</label>
+            <textarea class="textarea" id="ingredient-input-2" placeholder="e.g. Sugar, E621, Palm Oil, Aspartame…" style="min-height:70px"></textarea>
+            <button class="btn btn-ghost mt-2" onclick="analyzeIngredientsInline()">Check Ingredients</button>
+            <div id="ingredient-result-2" class="mt-3"></div>
+          </div>
+        </div>
+      </div>
+
     </div>
   </div>
-</div>
+</div><!-- /page-scan -->
 
-<!-- =================== AI CHAT PAGE =================== -->
+<!-- ================================================
+  PAGE: AI CHAT
+================================================ -->
 <div class="page" id="page-chat">
-  <div class="chat-layout" style="padding-top:80px">
-    <div style="margin-bottom:1rem">
-      <h1 style="font-family:'Playfair Display',serif;font-size:1.5rem">🤖 ShelfLife AI Chat</h1>
-      <p style="font-size:0.8rem;color:var(--ink-light)">Powered by Claude AI · Updates your fridge in real time</p>
+  <div class="chat-layout">
+    <div class="chat-header">
+      <h1>🤖 ShelfLife AI Chat</h1>
+      <p>Powered by Claude · Updates your fridge inventory in real time</p>
     </div>
 
     <div class="chat-messages" id="chat-messages"></div>
 
-    <div>
-      <div class="chat-suggestions">
-        <button class="suggestion-chip" onclick="useSuggestion('-1 egg')">-1 egg</button>
-        <button class="suggestion-chip" onclick="useSuggestion('finished milk')">finished milk</button>
-        <button class="suggestion-chip" onclick="useSuggestion('almost out of cheese')">almost out of cheese</button>
-        <button class="suggestion-chip" onclick="useSuggestion('what\\'s expiring soon?')">what's expiring?</button>
-        <button class="suggestion-chip" onclick="useSuggestion('what do I have in the fridge?')">what's in fridge?</button>
+    <div class="chat-bottom">
+      <div class="chat-chips">
+        <button class="chip" onclick="useSuggestion('-1 egg')">-1 egg</button>
+        <button class="chip" onclick="useSuggestion('finished milk')">finished milk</button>
+        <button class="chip" onclick="useSuggestion('almost out of cheese')">almost out of cheese</button>
+        <button class="chip" onclick="useSuggestion(&quot;what's expiring soon?&quot;)">what's expiring?</button>
+        <button class="chip" onclick="useSuggestion(&quot;what do I have?&quot;)">what do I have?</button>
       </div>
-      <div class="chat-input-area">
-        <textarea class="chat-input" id="chat-input" placeholder="Type a message... e.g. '-1 egg', 'finished the milk'" rows="1"></textarea>
-        <button class="btn btn-primary" onclick="sendChatMessage()" style="padding:0.65rem 1.25rem">Send ↑</button>
+      <div class="chat-input-row">
+        <textarea class="chat-input" id="chat-input" rows="1" placeholder="Type a message… e.g. '-1 egg' or 'finished the milk'"></textarea>
+        <button class="btn btn-primary btn-sm" onclick="sendChatMsg()">Send ↑</button>
       </div>
     </div>
   </div>
-</div>
+</div><!-- /page-chat -->
 
-<!-- =================== SHOPPING PAGE =================== -->
+<!-- ================================================
+  PAGE: SHOPPING LIST
+================================================ -->
 <div class="page" id="page-shopping">
-  <div class="shopping-layout" style="padding-top:5rem">
-    <div class="dashboard-header">
-      <div>
-        <h1>🛒 Shopping List</h1>
-        <p style="color:var(--ink-light);font-size:0.875rem;margin-top:0.25rem" id="shop-count">— items to buy</p>
+  <div class="page-wrap">
+    <div class="shop-layout">
+      <div class="dash-header">
+        <div>
+          <h1>🛒 Shopping List</h1>
+          <p id="shop-count">Loading…</p>
+        </div>
       </div>
+      <div class="shop-add-row">
+        <input class="input" id="shop-input" placeholder="Add item to list…" onkeydown="if(event.key==='Enter')addShopItem()" />
+        <button class="btn btn-primary" onclick="addShopItem()">＋ Add</button>
+      </div>
+      <div id="shopping-list"></div>
     </div>
-
-    <div style="display:flex;gap:0.75rem;margin-bottom:1.5rem">
-      <input class="input-field" id="shop-input" placeholder="Add item..." onkeydown="if(event.key==='Enter') addShopItem()" />
-      <button class="btn btn-primary" onclick="addShopItem()">＋ Add</button>
-    </div>
-
-    <div id="shopping-list"></div>
   </div>
-</div>
+</div><!-- /page-shopping -->
 
-<!-- =================== FAMILY PAGE =================== -->
+<!-- ================================================
+  PAGE: FAMILY FRIDGE
+================================================ -->
 <div class="page" id="page-family">
-  <div class="family-layout" style="padding-top:5rem">
-    <div class="dashboard-header">
-      <div>
-        <h1>👨‍👩‍👧 Family Fridge</h1>
-        <p style="color:var(--ink-light);font-size:0.875rem;margin-top:0.25rem">Shared fridge management for your household</p>
-      </div>
-    </div>
-
-    <div style="background:var(--bg-card);border:1px solid var(--border);border-radius:var(--radius);padding:1.25rem;margin-bottom:1.5rem">
-      <div style="display:flex;align-items:center;justify-content:space-between;margin-bottom:0.5rem">
-        <h3 style="font-family:'Playfair Display',serif">🏠 Suerte Family Fridge</h3>
-        <span style="font-size:0.78rem;background:var(--fresh-pale);color:var(--fresh);padding:0.2rem 0.6rem;border-radius:100px;font-weight:600">Active</span>
-      </div>
-      <p style="font-size:0.85rem;color:var(--ink-mid)">Last updated: 2 hours ago · 8 items tracked</p>
-    </div>
-
-    <h3 style="font-family:'Playfair Display',serif;margin-bottom:1rem;font-size:1rem">Members</h3>
-    <div id="family-list"></div>
-
-    <div class="invite-box">
-      <h3>Invite a Family Member</h3>
-      <p>Share your fridge with household members so everyone stays in sync.</p>
-      <div class="invite-input-row">
-        <input class="input-field" id="invite-email" type="email" placeholder="Enter email address..." />
-        <button class="btn btn-primary" onclick="sendInvite()">Send Invite 📧</button>
-      </div>
-    </div>
-
-    <div style="margin-top:2rem;background:var(--bg-card);border:1px solid var(--border);border-radius:var(--radius);padding:1.5rem">
-      <h3 style="font-family:'Playfair Display',serif;margin-bottom:1rem;font-size:1rem">Recent Activity</h3>
-      <div style="display:flex;flex-direction:column;gap:0.6rem">
-        <div style="display:flex;gap:0.75rem;align-items:center;font-size:0.85rem">
-          <span style="color:var(--ink-light);font-family:'JetBrains Mono',monospace;font-size:0.75rem">10:42</span>
-          <div class="member-avatar" style="width:28px;height:28px;font-size:0.7rem;background:#2D9E6B">A</div>
-          <span>Aruzhan added <b>Eggs ×12</b></span>
+  <div class="page-wrap">
+    <div class="family-layout">
+      <div class="dash-header">
+        <div>
+          <h1>👨‍👩‍👧 Family Fridge</h1>
+          <p>Shared fridge management for your household</p>
         </div>
-        <div style="display:flex;gap:0.75rem;align-items:center;font-size:0.85rem">
-          <span style="color:var(--ink-light);font-family:'JetBrains Mono',monospace;font-size:0.75rem">09:15</span>
-          <div class="member-avatar" style="width:28px;height:28px;font-size:0.7rem;background:#4A90D9">I</div>
-          <span>Inabat used last of <b>Orange Juice</b> → added to shopping list</span>
+        <span class="badge badge-accent">🟢 Active</span>
+      </div>
+
+      <!-- Fridge info -->
+      <div class="card mb-4">
+        <div class="card-body" style="display:flex;align-items:center;justify-content:space-between;flex-wrap:wrap;gap:12px">
+          <div>
+            <div style="font-weight:700;font-family:'Sora',sans-serif">🏠 Suerte Family Fridge</div>
+            <div class="text-sm text-muted mt-1">Last updated 2 hours ago · 9 items tracked</div>
+          </div>
+          <div class="flex gap-2">
+            <span class="badge badge-fresh">🟢 9 fresh</span>
+            <span class="badge badge-soon">🟡 2 expiring</span>
+            <span class="badge badge-expired">🔴 1 expired</span>
+          </div>
         </div>
-        <div style="display:flex;gap:0.75rem;align-items:center;font-size:0.85rem">
-          <span style="color:var(--ink-light);font-family:'JetBrains Mono',monospace;font-size:0.75rem">Yesterday</span>
-          <div class="member-avatar" style="width:28px;height:28px;font-size:0.7rem;background:#9B59B6">Z</div>
-          <span>Zere noted: <b>"Yogurt is mine! 🙏"</b></span>
+      </div>
+
+      <h3 style="font-family:'Sora',sans-serif;font-size:0.9rem;font-weight:700;margin-bottom:12px">Members</h3>
+      <div id="family-list"></div>
+
+      <!-- Activity -->
+      <div class="card mt-4">
+        <div class="card-header"><div><h3>Recent Activity</h3><p>What your family has been doing</p></div></div>
+        <div class="card-body">
+          <div class="activity-item">
+            <div class="activity-av" style="background:#059669">AM</div>
+            <div>
+              <div class="activity-text"><strong>Aruzhan</strong> added Eggs ×12</div>
+              <div class="activity-time">10 minutes ago</div>
+            </div>
+          </div>
+          <div class="activity-item">
+            <div class="activity-av" style="background:#8b5cf6">ZM</div>
+            <div>
+              <div class="activity-text"><strong>Zere</strong> marked Milk as "Almost Empty"</div>
+              <div class="activity-time">1 hour ago</div>
+            </div>
+          </div>
+          <div class="activity-item">
+            <div class="activity-av" style="background:#3b82f6">IB</div>
+            <div>
+              <div class="activity-text"><strong>Inabat</strong> discarded expired Sausage</div>
+              <div class="activity-time">4 hours ago</div>
+            </div>
+          </div>
+          <div class="activity-item">
+            <div class="activity-av" style="background:#f59e0b">AB</div>
+            <div>
+              <div class="activity-text"><strong>Aigerim</strong> added note "My yogurt — hands off! 😤"</div>
+              <div class="activity-time">Yesterday</div>
+            </div>
+          </div>
         </div>
+      </div>
+
+      <!-- Invite -->
+      <div class="invite-box">
+        <h3>Invite a Family Member</h3>
+        <p>Share your fridge with household members so everyone stays in sync in real time.</p>
+        <div class="invite-row">
+          <input class="input" id="invite-email" type="email" placeholder="Enter email address…" />
+          <button class="btn btn-primary" onclick="sendInvite()">Send Invite 📧</button>
+        </div>
+        <div style="margin-top:16px;font-size:0.8rem;color:var(--text-3)">Or share the invite code:</div>
+        <code style="display:inline-block;margin-top:6px;background:white;border:1px solid var(--border);padding:6px 16px;border-radius:var(--r-md);font-family:'JetBrains Mono',monospace;font-weight:700;font-size:0.9rem">SUERTE-777</code>
       </div>
     </div>
   </div>
-</div>
+</div><!-- /page-family -->
 
-<!-- =================== MODALS =================== -->
+<!-- ================================================
+  MODALS
+================================================ -->
 
 <!-- Add Product Modal -->
-<div class="modal-overlay" id="modal-add" onclick="if(event.target===this)closeModal('modal-add')">
+<div class="modal-overlay" id="modal-add">
   <div class="modal">
     <div class="modal-header">
-      <span class="modal-title">＋ Add Product</span>
+      <span class="modal-title">＋ Add Product to Fridge</span>
       <button class="modal-close" onclick="closeModal('modal-add')">×</button>
     </div>
-    <div class="form-group">
-      <label class="form-label">Product Name *</label>
-      <input class="form-input" id="add-name" placeholder="e.g. Whole Milk" />
-    </div>
-    <div style="display:grid;grid-template-columns:1fr 1fr;gap:0.75rem">
-      <div class="form-group">
-        <label class="form-label">Quantity *</label>
-        <input class="form-input" id="add-qty" type="number" min="1" value="1" />
+    <div class="modal-body">
+      <div class="mb-3">
+        <label class="label">Product Name *</label>
+        <input class="input" id="add-name" placeholder="e.g. Whole Milk" />
       </div>
-      <div class="form-group">
-        <label class="form-label">Unit</label>
-        <input class="form-input" id="add-unit" placeholder="pcs, L, g..." />
+      <div style="display:grid;grid-template-columns:1fr 1fr;gap:10px" class="mb-3">
+        <div>
+          <label class="label">Quantity *</label>
+          <input class="input" id="add-qty" type="number" min="1" value="1" />
+        </div>
+        <div>
+          <label class="label">Unit</label>
+          <input class="input" id="add-unit" placeholder="pcs, L, g…" />
+        </div>
+      </div>
+      <div class="mb-3">
+        <label class="label">Expiry Date *</label>
+        <input class="input" id="add-expiry" type="date" />
+      </div>
+      <div class="mb-3">
+        <label class="label">Category</label>
+        <select class="select" id="add-category">
+          <option value="dairy">🥛 Dairy</option>
+          <option value="meat">🍗 Meat</option>
+          <option value="produce">🥬 Produce</option>
+          <option value="beverage">🍹 Beverage</option>
+          <option value="grain">🌾 Grain</option>
+          <option value="other">🍱 Other</option>
+        </select>
+      </div>
+      <div>
+        <label class="label">Note (optional)</label>
+        <input class="input" id="add-notes" placeholder='e.g. "My snack — don&apos;t touch! 😡"' />
       </div>
     </div>
-    <div class="form-group">
-      <label class="form-label">Expiry Date *</label>
-      <input class="form-input" id="add-expiry" type="date" />
+    <div class="modal-footer">
+      <button class="btn btn-ghost" onclick="closeModal('modal-add')">Cancel</button>
+      <button class="btn btn-primary" onclick="addProduct()">Add to Fridge ✅</button>
     </div>
-    <div class="form-group">
-      <label class="form-label">Category</label>
-      <select class="form-input" id="add-category">
-        <option value="dairy">🥛 Dairy</option>
-        <option value="meat">🍗 Meat</option>
-        <option value="produce">🥬 Produce</option>
-        <option value="other">🍱 Other</option>
-      </select>
-    </div>
-    <div class="form-group">
-      <label class="form-label">Note (optional)</label>
-      <input class="form-input" id="add-note" placeholder='e.g. "My snack — do not touch! 😡"' />
-    </div>
-    <button class="btn btn-primary" style="width:100%;justify-content:center" onclick="addProduct()">Add to Fridge ✅</button>
   </div>
 </div>
 
 <!-- Note Modal -->
-<div class="modal-overlay" id="modal-note" onclick="if(event.target===this)closeModal('modal-note')">
+<div class="modal-overlay" id="modal-note">
   <div class="modal">
     <div class="modal-header">
-      <span class="modal-title">📝 Add Note — <span id="note-product-name"></span></span>
+      <span class="modal-title">📝 Note — <span id="note-product-name"></span></span>
       <button class="modal-close" onclick="closeModal('modal-note')">×</button>
     </div>
-    <input type="hidden" id="note-product-id" />
-    <div class="form-group">
-      <label class="form-label">Your Note</label>
-      <textarea class="form-input" id="note-text" rows="3" placeholder='e.g. "My chocolate — hands off! 🍫"' style="border-radius:12px;resize:vertical"></textarea>
+    <div class="modal-body">
+      <label class="label">Your note</label>
+      <textarea class="textarea" id="note-text" placeholder='e.g. "My chocolate — hands off! 🍫"'></textarea>
     </div>
-    <button class="btn btn-primary" style="width:100%;justify-content:center" onclick="saveNote()">Save Note 📌</button>
+    <div class="modal-footer">
+      <button class="btn btn-ghost" onclick="closeModal('modal-note')">Cancel</button>
+      <button class="btn btn-primary" onclick="saveNote()">Save Note 📌</button>
+    </div>
   </div>
 </div>
 
-<!-- =================== TOAST CONTAINER =================== -->
-<div class="toast-container" id="toast-container"></div>
+<!-- ================================================
+  TOAST CONTAINER
+================================================ -->
+<div class="toasts" id="toasts"></div>
 
+<!-- ================================================
+  SCRIPTS
+================================================ -->
 <script src="js/app.js"></script>
 <script>
-// Ingredient text analysis fallback
-function analyzeIngredients() {
-  const input = document.getElementById('ingredient-input').value.trim();
-  if (!input) { showToast('Enter ingredients first', 'error'); return; }
-  
-  const resultDiv = document.getElementById('ingredient-result');
-  resultDiv.innerHTML = `<div style="display:flex;align-items:center;gap:0.75rem;color:var(--ink-mid)"><div class="spinner" style="border-color:rgba(0,0,0,0.15);border-top-color:var(--fresh)"></div><span>Analyzing with AI…</span></div>`;
-
-  fetch("https://api.anthropic.com/v1/messages", {
-    method: "POST",
-    headers: { "Content-Type": "application/json" },
-    body: JSON.stringify({
-      model: "claude-sonnet-4-20250514",
-      max_tokens: 600,
-      messages: [{
-        role: "user",
-        content: `Analyze these food ingredients for health concerns. For each concerning ingredient, return JSON array: [{"code":"E621","name":"Monosodium Glutamate","risk":"high/medium/low","warning":"brief warning"}]. If nothing concerning, return []. Ingredients: ${input}. Return ONLY the JSON array.`
-      }]
-    })
-  })
-  .then(r => r.json())
-  .then(data => {
-    const text = data.content?.map(c => c.text||'').join('') || '[]';
-    const clean = text.replace(/```json|```/g,'').trim();
-    const items = JSON.parse(clean);
-    if (items.length === 0) {
-      resultDiv.innerHTML = `<div style="color:var(--fresh);font-weight:600;padding:0.75rem;background:var(--fresh-pale);border-radius:10px">✅ No major health concerns detected in these ingredients!</div>`;
-    } else {
-      resultDiv.innerHTML = items.map(i => `
-        <div class="ingredient-warning ${i.risk==='high'?'danger':''}">
-          <span style="font-family:'JetBrains Mono',monospace;font-size:0.8rem;font-weight:600">${i.code}</span>
-          <div>
-            <div style="font-weight:500;font-size:0.85rem">${i.name}</div>
-            <div style="font-size:0.78rem;color:var(--ink-mid)">${i.risk==='high'?'🔴':'⚠️'} ${i.warning}</div>
-          </div>
-        </div>
-      `).join('');
-    }
-  })
-  .catch(() => {
-    // Demo fallback
-    const known = { 'e621':['MSG / Flavor Enhancer','⚠️ May affect hyperactivity in children','medium'], 'e250':['Sodium Nitrite','🔴 Potential carcinogen in processed meats','high'], 'e330':['Citric Acid','✅ Generally safe (natural)','low'], 'palm oil':['Palm Oil','⚠️ High in saturated fat','medium'], 'e110':['Sunset Yellow FCF','⚠️ Artificial color, may cause allergies','medium'] };
-    const found = [];
-    Object.entries(known).forEach(([key, val]) => { if (input.toLowerCase().includes(key)) found.push({ code: key.toUpperCase(), name: val[0], warning: val[1], risk: val[2] }); });
-    if (found.length === 0) { resultDiv.innerHTML = `<div style="color:var(--fresh);padding:0.75rem;background:var(--fresh-pale);border-radius:10px">✅ No known concerning additives detected.</div>`; return; }
-    resultDiv.innerHTML = found.map(i => `<div class="ingredient-warning ${i.risk==='high'?'danger':''}"><span style="font-family:'JetBrains Mono',monospace;font-weight:600;font-size:0.8rem">${i.code}</span><div><div style="font-weight:500;font-size:0.85rem">${i.name}</div><div style="font-size:0.78rem;color:var(--ink-mid)">${i.warning}</div></div></div>`).join('');
-  });
+// Inline ingredient check (for scan page upload tab)
+function analyzeIngredientsInline() {
+  const text = document.getElementById("ingredient-input-2").value.trim();
+  if (!text) { toast("Paste ingredient list first", "error"); return; }
+  document.getElementById("ingredient-input").value = text;
+  setScanMode("ingredient", document.querySelectorAll(".scan-tab")[2]);
+  analyzeIngredients();
 }
 </script>
 </body>
